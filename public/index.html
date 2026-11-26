@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+  <meta name="theme-color" content="#fafaf9">
+  <title>Pixelplot</title>
+  <link rel="icon" href="/mark.svg">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main>
+    <div class="stage">
+      <figure>
+        <div class="artboard">
+          <canvas id="canvas" width="128" height="128" role="img" aria-label="Pixel drawing"></canvas>
+          <canvas id="grid" aria-hidden="true"></canvas>
+        </div>
+        <figcaption id="dimensions">
+          <span class="measure measure-width">
+            <span><span class="sr-only">Width: </span><span id="canvas-width"></span></span>
+          </span>
+          <span class="measure measure-height">
+            <span><span class="sr-only">Height: </span><span id="canvas-height"></span></span>
+          </span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="dock">
+      <form id="form" aria-label="Draw or edit a scene">
+        <textarea id="prompt" rows="1" maxlength="1200" enterkeyhint="go" aria-label="Scene prompt" placeholder="Describe a scene…" required></textarea>
+        <button id="submit" class="icon" type="submit" aria-label="Draw scene" title="Draw scene (Enter)">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16 5v4.5a2 2 0 0 1-2 2H4m3.5-3.5L4 11.5 7.5 15"/></svg>
+        </button>
+        <p id="error" role="alert" hidden></p>
+      </form>
+      <div class="history">
+        <button id="history-toggle" class="icon" type="button" title="History" aria-label="History" aria-controls="history-panel" aria-expanded="false">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 8a6.8 6.8 0 1 1 .8 6.2M3 4v4h4m3-2v4.5l2.8 1.8"/></svg>
+        </button>
+        <section id="history-panel" aria-label="Drawing history" hidden>
+          <h2>History</h2>
+          <ol id="entries"></ol>
+        </section>
+      </div>
+    </div>
+    <span class="sr-only" id="status" role="status"></span>
+  </main>
+  <script type="module" src="/app.mjs"></script>
+</body>
+</html>
