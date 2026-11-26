@@ -13,7 +13,7 @@ Each time is the median of two live runs in November 2026. Across all eight runs
 
 ## How the comparison worked
 
-Both paths used GPT-6.1 Sol Ultrafast, the same 128 × 128 starting canvas, the same user prompt, and fresh conversation state. The baseline used Pixelplot’s current compact instruction. The alternative issued four concurrent Responses requests. Each worker received global coordinates, its own 64 × 64 region, a common center and approximate subject bounds, and the same lighting direction. Each could draw a shape past its boundary. The renderer displayed only the pixels inside that worker’s quadrant, without a planner or a seam-repair pass.
+Both paths used GPT-6.1 Sol Ultrafast, the same 128 × 128 starting canvas, the same user prompt, and fresh conversation state. The baseline used the app’s current compact instruction. The alternative issued four concurrent Responses requests. Each worker received global coordinates, its own 64 × 64 region, a common center and approximate subject bounds, and the same lighting direction. Each could draw a shape past its boundary. The renderer displayed only the pixels inside that worker’s quadrant, without a planner or a seam-repair pass.
 
 Each prompt ran twice with the order reversed. Timing started at a real Enter keypress in Chrome and ended on the last observed change to the canvas. In every trial the exported pixels matched the actual browser canvas. The four calls launched within 8 ms of each other and overlapped on every drawing. Four workers used 8,802 total output tokens across the eight images, versus 2,866 for one worker.
 

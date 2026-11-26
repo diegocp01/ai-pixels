@@ -32,7 +32,7 @@ const server=http.createServer(async(req,res)=>{
     for await(const chunk of req){raw+=chunk;if(raw.length>160000)return json(res,413,{error:'Canvas is too large.'});}
     let input,scene;
     try{input=JSON.parse(raw);scene=validateScene(input.scene);}catch{return json(res,400,{error:'Invalid canvas data.'});}
-    if(input.scene.size===undefined)return json(res,409,{error:'Refresh Pixelplot to edit this canvas at 128 × 128. Your saved drawing will reopen.'});
+    if(input.scene.size===undefined)return json(res,409,{error:'Refresh AI pixels to edit this canvas at 128 × 128. Your saved drawing will reopen.'});
     const {canvas,prompt}=input;
     if(typeof canvas!=='string'||!/^[-a-z0-9]{36}$/.test(canvas)||typeof prompt!=='string'||!prompt.trim()||prompt.length>1200)return json(res,400,{error:'Enter a drawing instruction up to 1,200 characters.'});
     const state=sessions.get(canvas)||{};
@@ -55,4 +55,4 @@ const server=http.createServer(async(req,res)=>{
     }finally{clearTimeout(timer);state.busy=false;res.end();controller.abort();}
   }catch{if(!res.headersSent)json(res,500,{error:'The studio could not complete this request.'});else res.end();}
 });
-server.listen(port,host,()=>console.log('Pixelplot studio at http://'+host+':'+port));
+server.listen(port,host,()=>console.log('AI pixels studio at http://'+host+':'+port));

@@ -1,6 +1,6 @@
-# Pixelplot
+# AI pixels
 
-![Three drawings made in Pixelplot: a teal hot-air balloon, a green robot holding a red umbrella, and a blue teapot with a yellow handle.](docs/pixelplot.png)
+![Three drawings made in AI pixels: a teal hot-air balloon, a green robot holding a red umbrella, and a blue teapot with a yellow handle.](docs/ai-pixels.png)
 
 I gave GPT‑6.1 Sol 16,384 pixels to draw and control. Type what you want to see and watch the picture take shape. Then tell it what to change.
 
@@ -9,8 +9,8 @@ I gave GPT‑6.1 Sol 16,384 pixels to draw and control. Type what you want to se
 You need **Node.js 22.9 or newer** and an OpenAI API key with access to GPT‑6.1 Sol Ultrafast. The studio runs with Node’s built-in modules.
 
 ```sh
-git clone https://github.com/diegocp01/pixelplot.git
-cd pixelplot
+git clone https://github.com/diegocp01/ai-pixels.git
+cd ai-pixels
 ```
 
 Create a file named `.env.local` in the project directory with your own key in place of the placeholder below. Git ignores this file. You can also supply `OPENAI_API_KEY` through your shell environment.
@@ -19,7 +19,7 @@ Create a file named `.env.local` in the project directory with your own key in p
 OPENAI_API_KEY=your-api-key
 ```
 
-Run `npm start`, then open [Pixelplot on localhost](http://127.0.0.1:4681/). Drawing requests use your OpenAI account. The key stays on the local server.
+Run `npm start`, then open [AI pixels on localhost](http://127.0.0.1:4681/). Drawing requests use your OpenAI account. The key stays on the local server.
 
 Try typing **“Draw a little green robot holding a red umbrella in the rain.”** Press Enter. Then type **“Make just the umbrella yellow.”** You can queue a follow-up while the first drawing finishes or use the history button to edit an earlier version. History lasts for the current page session.
 

@@ -1,4 +1,4 @@
-# Pixelplot generation latency
+# AI pixels generation latency
 
 On November 23, 2026, **GPT-6.1 Sol Ultrafast with one compact drawing request** finished fastest. On five matched new scenes its median was **1.00 s to the first visible pixels, 1.88 s to the finished image, and 1.96 s until the app was ready**. All five passed their pixel checks. The model streams shapes and colors. The browser fills the 128 × 128 canvas. The compact instruction asks for 7–10 shapes on a simple subject and lets the model use more for complex requests.
 
@@ -38,7 +38,7 @@ OpenAI lists four Ultrafast models. All four ran successfully here. A separate l
 
 ## Measurement and accuracy
 
-The 96 timed browser runs consisted of 27 initial trials, 16 trials on two additional subjects, 35 matched architecture trials, and 18 final model comparisons. Each browser trial sent a real Enter keypress to Pixelplot’s production frontend and used a live API response. A local benchmark server selected the architecture. Trials ran sequentially in headless Chrome on one machine, rotating candidate order within each batch. Each trial started with fresh conversation state and the same starting canvas for its prompt.
+The 96 timed browser runs consisted of 27 initial trials, 16 trials on two additional subjects, 35 matched architecture trials, and 18 final model comparisons. Each browser trial sent a real Enter keypress to the production frontend and used a live API response. A local benchmark server selected the architecture. Trials ran sequentially in headless Chrome on one machine, rotating candidate order within each batch. Each trial started with fresh conversation state and the same starting canvas for its prompt.
 
 The clock started at the prompt’s keydown event. A frame observer compared actual canvas pixels after paints. It recorded the first visual change, the last visual change, and readiness on a subsequent frame after the app finished the request. Times have approximately one animation frame of resolution. Network latency, output length, and model sampling vary. Each cell in the model table is a single observation, and the medians are specific to these prompts.
 
@@ -46,7 +46,7 @@ The pixel checks measured exact requested colors, relative positions, three sepa
 
 ## Repeat the live benchmark
 
-Use Node 22.15 or newer with Playwright and Chromium available. Pixelplot’s normal local API key configuration supplies the credentials. Each run makes billable API requests. The command below reproduces the five-scene architecture comparison and the edit. Use a fresh output directory for each experiment. Set `PIXEL_PLAYWRIGHT` to an installed Playwright module and `PIXEL_CHROME` to a browser executable if needed.
+Use Node 22.15 or newer with Playwright and Chromium available. the app’s normal local API key configuration supplies the credentials. Each run makes billable API requests. The command below reproduces the five-scene architecture comparison and the edit. Use a fresh output directory for each experiment. Set `PIXEL_PLAYWRIGHT` to an installed Playwright module and `PIXEL_CHROME` to a browser executable if needed.
 
 ```sh
 PIXEL_BENCH_OUT=./bench-output PIXEL_TAG=paired \
